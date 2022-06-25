@@ -36,4 +36,40 @@ $(document).ready(function(){
         },
         
     })
+
+    //swiper partners
+    let partnersSwiper = new Swiper('.partners-swiper.swiper', {
+        slidesPerView: 1,
+
+        allowTouchMove: true,
+
+        spaceBetween: 20,
+        autoHeight: true,
+        loop: false,
+        navigation: {
+            nextEl: '.partners-swiper__next',
+            prevEl: '.partners-swiper__prev',
+        },
+        breakpoints: {
+            370: {
+                slidesPerView: 2,
+                //spaceBetween: 60,
+            },
+            440: {
+                slidesPerView: 3,
+                //spaceBetween: 60,
+            },
+            650: {
+                slidesPerView: 4,
+                spaceBetween: 60,
+            },
+            940: {
+                spaceBetween: 120,
+            },
+            1400: {
+                spaceBetween: 250,
+            },
+        },
+        
+    })
 })
