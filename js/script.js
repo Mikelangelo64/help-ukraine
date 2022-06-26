@@ -7,11 +7,62 @@ $(document).ready(function(){
 
     })
 
+    //like .catalog-list__item
+    $('._like').click(function(){
+        if($(this).hasClass('catalog-list__like')){
+            $(this).parent().parent().toggleClass('_liked')
+        }
+        if($(this).hasClass('house-item__like')){
+            
+            $(this).parent().parent().parent().parent().parent().toggleClass('_liked')
+        }
+        
+    })
+
     //SORT-active
     $('.sort').click(function(e){
         $(this).toggleClass('_active-sort')
         $(".sort__choise").toggleClass('_active-sort')
     })
+
+    //progress-donate
+    let moneyAll = 340000
+    let moneyNow = 108658
+    let moneyPercent
+
+    if(moneyNow <= moneyAll){
+        moneyPercent = Math.round(moneyNow / moneyAll * 100)
+    }else{
+        moneyPercent = 100
+    }
+
+    document.querySelector('.house-item-counter__val').innerHTML = moneyNow
+
+    document.documentElement.style.setProperty('--progress', moneyPercent+'%')
+    console.log(document.documentElement.style);
+
+    let options = {
+        root: document.querySelector('#scrollArea'),
+        rootMargin: '0px',
+        threshold: 1.0
+    }
+    let callback = function(entries, observer) {
+        /* Content excerpted, show below */
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                console.log(entry.target);
+                entry.target.classList.add('running')
+
+                observer.unobserve(entry.target)
+            }
+        })
+    };
+
+    let observer = new IntersectionObserver(callback, {})
+
+    let target = document.querySelector('.inner');
+
+    observer.observe(target)
 
     //swiper`s
 
@@ -39,7 +90,7 @@ $(document).ready(function(){
 
     //swiper partners
     let partnersSwiper = new Swiper('.partners-swiper.swiper', {
-        slidesPerView: 1,
+        slidesPerView: 4,
 
         allowTouchMove: true,
 
@@ -51,6 +102,10 @@ $(document).ready(function(){
             prevEl: '.partners-swiper__prev',
         },
         breakpoints: {
+            320: {
+                slidesPerView: 1,
+                //spaceBetween: 60,
+            },
             370: {
                 slidesPerView: 2,
                 //spaceBetween: 60,
@@ -66,8 +121,90 @@ $(document).ready(function(){
             940: {
                 spaceBetween: 120,
             },
-            1400: {
+            1450: {
                 spaceBetween: 250,
+            },
+        },
+        
+    })
+
+    //swiper .house-item-compare__swiper
+    let compareCategories = ['Зруйнований будинок', 'Відновлений будинок']
+
+    let compareSwiper = new Swiper('.house-item-compare__swiper.swiper', {
+        slidesPerView: 1,
+
+        allowTouchMove: false,
+
+        spaceBetween: 80,
+        autoHeight: false,
+        loop: false,
+        pagination: {
+            
+            el: '.swiper-pagination.house-item-compare__title__container',
+            clickable: true,
+            renderBullet: function (index, className) {
+                return `<span class="house-item-compare__title ${className}">${compareCategories[index]}</span>`;
+            },
+        },
+        
+    })
+
+    //swiper .gallery-swiper__destroyed
+    let destroyedSwiper = new Swiper('.gallery-swiper__destroyed.swiper', {
+        slidesPerView: 3,
+
+        allowTouchMove: true,
+
+        spaceBetween: 32,
+        autoHeight: true,
+        loop: false,
+        navigation: {
+            nextEl: '.gallery-swiper__destroyed__next',
+            prevEl: '.gallery-swiper__destroyed__prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                //spaceBetween: 60,
+            },
+            530: {
+                slidesPerView: 2,
+                //spaceBetween: 60,
+            },
+            900: {
+                slidesPerView: 3,
+                //spaceBetween: 60,
+            },
+        },
+        
+    })
+
+    //swiper .gallery-swiper__restored
+    let restoredSwiper = new Swiper('.gallery-swiper__restored.swiper', {
+        slidesPerView: 3,
+
+        allowTouchMove: true,
+
+        spaceBetween: 32,
+        autoHeight: true,
+        loop: false,
+        navigation: {
+            nextEl: '.gallery-swiper__restored__next',
+            prevEl: '.gallery-swiper__restored__prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                //spaceBetween: 60,
+            },
+            370: {
+                slidesPerView: 2,
+                //spaceBetween: 60,
+            },
+            900: {
+                slidesPerView: 3,
+                //spaceBetween: 60,
             },
         },
         
