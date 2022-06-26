@@ -97,90 +97,83 @@
         </div>
     </header>
 
-    <section class="statement form-section">
+    <section class="form-section register-section">
         <div class="_container">
-            <div class="statement__wrapper">
-                <h2 class="title statement__title form-section__title">
-                    Оформить заявку
+            <div class="form-section__wrapper">
+                <h2 class="title form-section__title">
+                    Реєстрація  на сайті
                 </h2>
-                <div class="statement__content form-section__content ">
-                    <form action="post" class="statement-form">
+                <div class="form-section__content">
+                    <form action="post" class="register-form register-citizen">
 
                         <div>
-                            <p>Область:</p>
-                            <input placeholder="Черкаська" type="text" name="region">
+                            <p>ПІП (*)</p>
+                            <input placeholder="Панасюк Дмитро Олегович" type="text" name="pib">
                         </div>
 
                         <em></em>
 
                         <div>
-                            <p>Район:</p>
-                            <input placeholder="Золотонішський" type="text" name="region">
+                            <p>E-mail (*)</p>
+                            <input placeholder="panasyk@com.ua" type="email" name="email">
                         </div>
 
                         <em></em>
 
                         <div>
-                            <p>Область:</p>
-                            <input placeholder="Золотонішський" type="text" name="area">
+                            <p>Пароль (*)</p>
+                            <input placeholder="***************" type="password" name="password">
                         </div>
 
                         <em></em>
 
                         <div>
-                            <p>Місто/cело</p>
-                            <input placeholder="Золотоноша" type="text" name="city">
+                            <p>Підтвердіть пароль (*)</p>
+                            <input placeholder="***************" type="password" name="re-password">
                         </div>
 
                         <em></em>
 
                         <div>
-                            <p>Вулиця:</p>
-                            <input placeholder="Шевченка" type="text" name="street">
-                        </div>
-
-                        <em></em>
-                    
-                        <div>
-                            <p>Номер будинку:</p>
-                            <input placeholder="68" type="number" name="num-street">
+                            <p>Телефон</p>
+                            <input placeholder="0978324587" type="tel" name="tel">
                         </div>
 
                         <em></em>
                         <strong></strong>
                     
                         <div>
-                            <p>Адреса (*)</p>
-                            <input placeholder="Україна, 18002, Черкаська обл., місто Черкаси, ВУЛИЦЯ БЛАГОВІ..." type="text" name="adress">
+                            <p>Серія паспорта (*)</p>
+                            <input placeholder="АА456400" type="text" name="passport-series">
                         </div>
 
                         <em></em>
                     
                         <div>
-                            <p>Люди, які прописані в будинку</p>
-                            <input placeholder="Дружина Анастасія, син Олексій" type="text" name="people-in-house">
+                            <p>Дата видачі (*)</p>
+                            <input placeholder="11.09.1978" type="date" name="passport-when-issued">
                         </div>
 
                         <em></em>
                     
                         <div>
-                            <p>Люди з обмеженими можливостями:</p>
-                            <input placeholder="відсутні" type="text" name="invalid">
+                            <p>Ким виданий (*)</p>
+                            <input placeholder="Бабуншківським РВ ДМУУМВС України Дніпропетровської обл." type="text" name="passport-who-issued">
                         </div>
 
                         <em></em>
                     
                         <div>
-                            <p>Масштаби ушкоджень:</p>
-                            <input placeholder="Фото/відео" type="text" name="file-name">
+                            <p>Документи на будинок (*)</p>
+                            <input placeholder="Ім’я файлу" type="text" name="file-name">
                             
                         </div>
                         <div>
                             <p></p>
 
-                            <input type="file" name="attached" id="attached">
-                            <label for="attached">
-                                <img src="./assets/img/label-attached.png" alt="attached">
+                            <input type="file" name="housedoc" id="housedoc">
+                            <label for="housedoc">
+                                <img src="./assets/img/label-attached.png" alt="house-doc">
                                 <span>
                                     Завантажити файл
                                 </span>
@@ -190,7 +183,8 @@
                         
                         <div>
                             <p></p>
-                            <button type="submit">Відправити</button>
+                            <button type="submit">Зареєструватися</button>
+                            <button type="cancel">Відміна</button>
                         </div>
         
         

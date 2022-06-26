@@ -27,12 +27,19 @@ $(document).ready(function(){
 
     //input file attached
     let fileAttached = $('.statement-form input[type=file]')[0]
+    let fileHouseDoc = $('.register-form input[type=file]')[0]
 
-    inputHandler(fileAttached)
+    if(fileAttached){
+        inputHandler(fileAttached)
+    }
+    if(fileHouseDoc){
+        inputHandler(fileHouseDoc)
+    }
 
     function inputHandler(input){
         let label	 = input.nextElementSibling
         let labelVal = label.innerHTML
+        let output = $('input[name=file-name]')[0]
 
         input.addEventListener( 'change', function( e ){
             //console.log('hui', e.target.files[0].name);
@@ -46,9 +53,9 @@ $(document).ready(function(){
             
 
             if( fileName ){
-                label.querySelector( 'span' ).innerHTML = fileName;
+                output.value = fileName;
             }else{
-                label.innerHTML = labelVal;
+                output.value = '';
             }
         })
     }
