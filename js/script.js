@@ -25,6 +25,34 @@ $(document).ready(function(){
         $(".sort__choise").toggleClass('_active-sort')
     })
 
+    //input file attached
+    let fileAttached = $('.statement-form input[type=file]')[0]
+
+    inputHandler(fileAttached)
+
+    function inputHandler(input){
+        let label	 = input.nextElementSibling
+        let labelVal = label.innerHTML
+
+        input.addEventListener( 'change', function( e ){
+            //console.log('hui', e.target.files[0].name);
+            let fileName = '';
+
+            try{
+                fileName = e.target.files[0].name
+            } catch{
+                fileName = ''
+            }
+            
+
+            if( fileName ){
+                label.querySelector( 'span' ).innerHTML = fileName;
+            }else{
+                label.innerHTML = labelVal;
+            }
+        })
+    }
+
     //progress-donate
     let moneyAll = 340000
     let moneyNow = 108658
@@ -36,33 +64,34 @@ $(document).ready(function(){
         moneyPercent = 100
     }
 
-    document.querySelector('.house-item-counter__val').innerHTML = moneyNow
+    if(document.querySelector('.house-item-counter__val')){
+        document.querySelector('.house-item-counter__val').innerHTML = moneyNow
+        document.documentElement.style.setProperty('--progress', moneyPercent+'%')
+        console.log(document.documentElement.style);
 
-    document.documentElement.style.setProperty('--progress', moneyPercent+'%')
-    console.log(document.documentElement.style);
-
-    let options = {
-        root: document.querySelector('#scrollArea'),
-        rootMargin: '0px',
-        threshold: 1.0
+        let callback = function(entries, observer) {
+            /* Content excerpted, show below */
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    console.log(entry.target);
+                    entry.target.classList.add('running')
+    
+                    observer.unobserve(entry.target)
+                }
+            })
+        };
+    
+        let observer = new IntersectionObserver(callback, {})
+    
+        let target = document.querySelector('.inner');
+    
+        observer.observe(target)
     }
-    let callback = function(entries, observer) {
-        /* Content excerpted, show below */
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                console.log(entry.target);
-                entry.target.classList.add('running')
+    
 
-                observer.unobserve(entry.target)
-            }
-        })
-    };
+   
 
-    let observer = new IntersectionObserver(callback, {})
-
-    let target = document.querySelector('.inner');
-
-    observer.observe(target)
+   
 
     //swiper`s
 
